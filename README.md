@@ -20,9 +20,9 @@ Install `skill-mw-buy` with yarn​:
 
 ## Skill trigger
 
-- Credentials (if needed or link into 1password)
-- Steps to trigger (describe in steps how to receive a trigger add link):
-- go to https://trigger.page.com (main page)​
+Steps to trigger:
+
+- go to https://www.google.com
 
 ## Additional Notes​
 
