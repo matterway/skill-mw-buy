@@ -1,10 +1,7 @@
-import {MatcherResult, SkillEnv} from '@matterway/types';
+import {MatcherResult} from '@matterway/types';
 import manifest from './manifest.json';
 
-export default function matcher(
-  window: Window,
-  skillEnv: SkillEnv,
-): MatcherResult {
+export default function matcher(window: Window): MatcherResult {
   const forceSkillMatch =
     window.location.hash === `#mw-force-skill-match-${manifest.identifier}`;
 
@@ -21,8 +18,7 @@ export default function matcher(
 
   const triggerUrl = 'https://www.google.com/';
 
-  const matcherResult =
-    window.location.href.startsWith(triggerUrl) && skillEnv.tag === 'local';
+  const matcherResult = window.location.href.startsWith(triggerUrl);
   console.debug(`${manifest.name} matcher result:`, matcherResult);
 
   return matcherResult;
