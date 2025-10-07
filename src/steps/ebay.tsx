@@ -2,6 +2,7 @@ import {
   click,
   fill,
   retry,
+  wait,
   waitForSelector,
   type Context,
 } from '@matterway/sdk';
@@ -33,7 +34,8 @@ export async function ebayStep(ctx: Context, data: ItemAndBudget) {
         .catch(() => resolve(false));
     }),
     new Promise((resolve) => {
-      waitForSelector(ctx, SELECTORS.ebay.xNoResults)
+      wait(1000)
+        .then(() => waitForSelector(ctx, SELECTORS.ebay.xNoResults))
         .then(() => resolve(false))
         .catch(() => resolve(false));
     }),

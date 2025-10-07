@@ -1,7 +1,6 @@
 import type {Context} from '@matterway/sdk';
-import {showSuccessNotice} from '@matterway/sdk';
+import {showUI} from '@matterway/sdk/lib/UIv2';
 import {t} from 'i18next';
-import manifest from 'manifest.json';
 import {Results} from 'shared/types';
 
 // You can duplicate this step to represent different endings for this task
@@ -12,28 +11,26 @@ export async function successStep(ctx: Context, results: Results) {
 
   // Only add logic here if it is performing closure specific to this ending
 
-  await showSuccessNotice(ctx, {
-    title: manifest.name,
-    description: manifest.description,
-    subtitle: t('success.subtitle'),
-    statuses: [
+  await showUI.success(ctx, {
+    title: t('success.subtitle'),
+    statusList: [
       {
-        text: results.amazon
+        label: results.amazon
           ? t('success.results', {website: 'Amazon'})
           : t('success.noResults', {website: 'Amazon'}),
-        success: results.amazon,
+        value: results.amazon ? 'success' : 'warning',
       },
       {
-        text: results.ebay
+        label: results.ebay
           ? t('success.results', {website: 'Ebay'})
           : t('success.noResults', {website: 'Ebay'}),
-        success: results.ebay,
+        value: results.ebay ? 'success' : 'warning',
       },
       {
-        text: results.alibaba
+        label: results.alibaba
           ? t('success.results', {website: 'Alibaba'})
           : t('success.noResults', {website: 'Alibaba'}),
-        success: results.alibaba,
+        value: results.alibaba ? 'success' : 'warning',
       },
     ],
   });
