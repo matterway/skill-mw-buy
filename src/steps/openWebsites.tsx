@@ -1,9 +1,5 @@
-import {
-  Context,
-  createBackgroundPage,
-  runJobsWithProgressList,
-  wait,
-} from '@matterway/sdk';
+import {Context, createBackgroundPage, wait} from '@matterway/sdk';
+import {showUI} from '@matterway/sdk/lib/UIv2';
 import {URLS} from 'shared/constants';
 import {ItemAndBudget, Results} from 'shared/types';
 import {alibabaStep} from './alibaba';
@@ -16,7 +12,7 @@ export async function openWebsitesStep(
 ): Promise<Results> {
   console.log('step: openWebsitesStep', {data});
 
-  const jobs = await runJobsWithProgressList(
+  const jobs = await showUI.runJobsWithProgressList(
     ctx,
     [
       {

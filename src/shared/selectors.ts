@@ -13,18 +13,18 @@ export const SELECTORS = {
   },
   ebay: {
     searchInput: 'input[aria-label*="Search"]',
-    searchButton: 'input[type="submit"]',
+    searchButton: 'button[class*="primary"]',
     priceInput: 'input[id*="endParam"][aria-label*="Max"]',
     priceButton: 'button[aria-label*="price"]',
-    confirmPrice: '[class*=item--applied]',
+    confirmPrice: 'button[aria-label*="price range"]',
     results: '[id*="item"]',
     xNoResults:
       "//h3[contains(text(), 'No exact matches found') and not(.//*[contains(text(), 'No exact matches found')])]",
   },
   alibaba: {
     cookieAccept: '.gdpr-agree-btn',
-    searchInput: '.search-bar-input',
-    searchButton: 'button[class*="search"]',
+    searchInput: 'input',
+    searchButton: 'button[aria-label*="Search"]',
     priceInput: '.filter-price-group div.pricet .left-filter-input',
     priceButton: '.filter-button.price-ok',
     results: '[class*=product-item]',
