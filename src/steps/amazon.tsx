@@ -20,13 +20,13 @@ export async function amazonStep(ctx: Context, data: ItemAndBudget) {
     ctx,
     SELECTORS.amazon.priceInput,
     'max',
-    data.maxBudget.toString(),
+    data.maxBudget?.toString() || '',
   );
   await setProperty(
     ctx,
     SELECTORS.amazon.priceInputHidden,
     'value',
-    data.maxBudget.toString(),
+    data.maxBudget?.toString() || '',
   );
   await click(ctx, SELECTORS.amazon.priceButton);
 

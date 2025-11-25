@@ -14,6 +14,36 @@ import {ItemAndBudget} from 'shared/types';
 export async function askForItemAndBudgetStep(ctx: Context) {
   console.log('step: askForItemAndBudgetStep');
 
+  const isMinBudgetInvalid = (min?: number, max?: number) =>
+    min !== undefined && (min <= 0 || (max !== undefined && min >= max));
+
+  const isMaxBudgetInvalid = (max?: number, min?: number) =>
+    max !== undefined && (max <= 0 || (min !== undefined && max <= min));
+
+  const getMinBudgetValidationMessage = (min?: number, max?: number) => {
+    if (min === undefined) return '';
+
+    if (min <= 0) return t('askForItemAndBudget.validBudget');
+
+    if (max !== undefined && min >= max) {
+      return 'Minimum budget must be less than maximum budget';
+    }
+
+    return '';
+  };
+
+  const getMaxBudgetValidationMessage = (max?: number, min?: number) => {
+    if (max === undefined) return '';
+
+    if (max <= 0) return t('askForItemAndBudget.validBudget');
+
+    if (min !== undefined && max <= min) {
+      return 'Maximum budget must be greater than minimum budget';
+    }
+
+    return '';
+  };
+
   const form: any = await showUI(
     ctx,
     bubble([
@@ -31,17 +61,24 @@ export async function askForItemAndBudgetStep(ctx: Context) {
           validationMessage: t('askForItemAndBudget.required'),
         }),
         inputField({
-          name: 'maxBudget',
-          label: 'Maximum budget (any currency)',
+          name: 'minBudget',
+          label: 'Minimum budget (optional, any currency)',
           type: 'number',
-          required: true,
-          invalid: async (state: any) => {
-            return state?.maxBudget <= 0;
-          },
+          required: false,
+          invalid: async (state: any) =>
+            isMinBudgetInvalid(state?.minBudget, state?.maxBudget),
           validationMessage: async (state: any) =>
-            state?.maxBudget <= 0
-              ? t('askForItemAndBudget.validBudget')
-              : t('askForItemAndBudget.required'),
+            getMinBudgetValidationMessage(state?.minBudget, state?.maxBudget),
+        }),
+        inputField({
+          name: 'maxBudget',
+          label: 'Maximum budget (optional, any currency)',
+          type: 'number',
+          required: false,
+          invalid: async (state: any) =>
+            isMaxBudgetInvalid(state?.maxBudget, state?.minBudget),
+          validationMessage: async (state: any) =>
+            getMaxBudgetValidationMessage(state?.maxBudget, state?.minBudget),
         }),
       ]),
       navigationBar({buttons: [{text: 'Submit', value: 'ok'}]}),

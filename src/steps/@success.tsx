@@ -32,6 +32,12 @@ export async function successStep(ctx: Context, results: Results) {
           : t('success.noResults', {website: 'Alibaba'}),
         value: results.alibaba ? 'success' : 'warning',
       },
+      {
+        label: results.temu
+          ? t('success.results', {website: 'Temu'})
+          : t('success.noResults', {website: 'Temu'}),
+        value: results.temu ? 'success' : 'warning',
+      },
     ],
   });
 }

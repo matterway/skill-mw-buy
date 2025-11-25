@@ -4,7 +4,7 @@
     "es6": true,
     "jest": true
   },
-  "extends": ["standard", "plugin:@matterway/recommended"],
+  "extends": ["standard"],
   "parser": "@typescript-eslint/parser",
   "globals": {
     "Atomics": "readonly",

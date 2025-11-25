@@ -20,7 +20,11 @@ export async function ebayStep(ctx: Context, data: ItemAndBudget) {
   await retry(
     ctx,
     async () => {
-      await fill(ctx, SELECTORS.ebay.priceInput, data.maxBudget.toString());
+      await fill(
+        ctx,
+        SELECTORS.ebay.priceInput,
+        data.maxBudget?.toString() || '',
+      );
       await click(ctx, SELECTORS.ebay.priceButton);
       return waitForSelector(ctx, SELECTORS.ebay.results, {timeout: 9000});
     },

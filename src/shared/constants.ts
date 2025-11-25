@@ -4,4 +4,5 @@ export const URLS = {
   EBAY: 'https://www.ebay.com',
   ALIBABA:
     'https://www.alibaba.com/?src=sem_ggl&field=UG&from=sem_ggl&cmpgn=20527067706&adgrp=&fditm=&tgt=&locintrst=&locphyscl=9060641&mtchtyp=&ntwrk=x&device=c&dvcmdl=&creative=&plcmnt=&plcmntcat=&aceid=&position=&gad_source=1&g',
+  TEMU: 'https://www.temu.com',
 };

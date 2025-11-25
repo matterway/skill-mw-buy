@@ -30,4 +30,14 @@ export const SELECTORS = {
     results: '[class*=product-item]',
     xNoResults: "not(//*[contains(@class, 'product-item')])",
   },
+  temu: {
+    searchInput: 'input[id="searchInput"]',
+    searchButton: '#searchBar > div[aria-label="Submit search"]',
+    filterPanelTrigger: '#splide03-slide01 div[aria-controls="all-filter-panel"]',
+    priceMinInput: 'input[placeholder="Min."]',
+    priceMaxInput: 'input[placeholder="Max."]',
+    priceApplyButton: '(//div[contains(@class,"LAqjot__")])[3]',
+    results: 'div[class="_3FuNuNP8 _2fOpdRtx"]',
+    xNoResults: '//span[contains(text(), "We couldn\'t find any results")]',
+  },
 };

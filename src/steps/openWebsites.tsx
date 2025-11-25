@@ -5,6 +5,7 @@ import {ItemAndBudget, Results} from 'shared/types';
 import {alibabaStep} from './alibaba';
 import {amazonStep} from './amazon';
 import {ebayStep} from './ebay';
+import {temuStep} from './temu';
 
 export async function openWebsitesStep(
   ctx: Context,
@@ -41,9 +42,18 @@ export async function openWebsitesStep(
           return result;
         },
       },
+      {
+        title: 'Opening Temu',
+        handler: async (_ctx) => {
+          await wait(750);
+          const backgroundCtx = await createBackgroundPage(_ctx, URLS.TEMU);
+          const result = await temuStep(backgroundCtx, data);
+          return result;
+        },
+      },
     ],
     {
-      concurrency: 3,
+      concurrency: 4,
     },
   );
 
@@ -54,6 +64,8 @@ export async function openWebsitesStep(
     ebay: jobs[1].result === true,
     // @ts-ignore
     alibaba: jobs[2].result === true,
+    // @ts-ignore
+    temu: jobs[3].result === true,
   };
 
   console.log({jobResults});

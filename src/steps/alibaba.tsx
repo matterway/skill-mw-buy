@@ -20,7 +20,7 @@ export async function alibabaStep(ctx: Context, data: ItemAndBudget) {
   await ctx.page.evaluate((budget) => {
     // Update relevant URL parameter with the budget
     const url = new URL(window.location.href);
-    url.searchParams.set('pricet', budget.toString());
+    url.searchParams.set('pricet', budget?.toString() || '');
 
     // Reload the page with the updated URL
     window.location.href = url.toString();
