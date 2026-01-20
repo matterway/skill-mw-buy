@@ -48,11 +48,8 @@ export async function openWebsitesStep(
   );
 
   const jobResults = {
-    // @ts-ignore
     amazon: jobs[0].result === true,
-    // @ts-ignore
     ebay: jobs[1].result === true,
-    // @ts-ignore
     alibaba: jobs[2].result === true,
   };
 
