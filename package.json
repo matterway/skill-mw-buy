@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@matterway/sdk": "^3.0.16",
+    "@matterway/sdk": "^3.0.29",
     "i18next": "^22.5.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -32,7 +32,7 @@
     "eslint": "^10.0.2",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3",
-    "@matterway/eslint-config": "^6.0.0",
+    "@matterway/eslint-config": "^6.0.6",
     "@matterway/prettier-config": "^1.0.0",
     "css-loader": "^7.1.4",
     "node-loader": "^2.1.0",
@@ -43,8 +43,9 @@
       "glob": "^13.0.0",
       "js-yaml": "^4.1.1",
       "semver": "^7.7.1",
-      "minimatch@<3.1.3": ">=3.1.3",
-      "minimatch@>=9.0.0 <9.0.6": ">=9.0.6"
+      "minimatch": "^10.2.3",
+      "undici": "^7.18.2",
+      "serialize-javascript": "^7.0.3"
     }
   },
   "engines": {
